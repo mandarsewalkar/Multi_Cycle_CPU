@@ -8,7 +8,7 @@ The processor follows a Harvard Architecture with separate program and data memo
 
 ## Demo
 
-[!alt_text](Images/demo.gif)
+[!Demo_vid](Images/demo.gif)
 
 - Demo of CPU executing Linear sort algo on an array with 6 elements
 - Demo example code can be found in "tb/Programs/linear_sort.v
