@@ -106,7 +106,7 @@ The design evolved through multiple iterations, resulting in an improved archite
 
 # Architecture
 
-[!alt_text](Images/cpu_architecture.png)
+![alt_text](Images/cpu_architecture.png)
 
 The processor consists of the following major blocks:
 
