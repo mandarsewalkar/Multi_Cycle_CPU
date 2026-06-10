@@ -6,6 +6,15 @@ The processor follows a Harvard Architecture with separate program and data memo
 
 ---
 
+## Demo
+
+[!alt_text](Images/demo.gif)
+
+- Demo of CPU executing Linear sort algo on an array with 6 elements
+- Demo example code can be found in "tb/Programs/linear_sort.v
+
+---
+
 ## Overview
 
 This project was built as a learning exercise to gain a deeper understanding of:
@@ -90,9 +99,14 @@ The design evolved through multiple iterations, resulting in an improved archite
 | Execution Model   | Multi-Cycle      |
 | Control Unit      | FSM Based        |
 
+- Though practically integrated 64kB memory is impractical for RTL -> GDS2 flow
+- Instead dedicated external memory modules are used for this
+
 ---
 
 # Architecture
+
+[!alt_text](Images/cpu_architecture.png)
 
 The processor consists of the following major blocks:
 
@@ -162,10 +176,10 @@ Different instruction categories reuse fields depending on the instruction type.
 ## Logical
 
 | Instruction | Operation           |
-| ----------- | ------------------- | --- |
-| AND         | RD = RS1 & RS2      |
-| OR          | RD = RS1            | RS2 |
-| XOR         | RD = RS1 ^ RS2      |
+| ----------- | ------------------- |
+| AND         | RD = RS1 and RS2    |
+| OR          | RD = RS1 or RS2     |
+| XOR         | RD = RS1 xor RS2    |
 | NOT         | RD = ~RS1           |
 | SHL         | Logical Shift Left  |
 | SHR         | Logical Shift Right |
@@ -178,7 +192,7 @@ Different instruction categories reuse fields depending on the instruction type.
 | ----------- | ------------------------ |
 | CMP         | Updates comparison flags |
 
-The CMP instruction is used before branch instructions to determine branching conditions.
+- The CMP instruction is used before branch instructions to determine branching conditions.
 
 ---
 
@@ -275,6 +289,9 @@ BLE(addr, label)
 BGT(addr, label)
 BGE(addr, label)
 ```
+
+- addr is kept for easy usage of jump and branching statements
+- Reason being as for this version label tag (as is assemble) doesn't exist yet
 
 ---
 
@@ -508,13 +525,12 @@ This project provided hands-on experience with:
 
 # Images
 
-## CPU Architecture
-
-![alt text](Images/cpu_architecture.png)
-
 ## FSM
 
-Insert FSM diagram here.
+![alt text](Images/FSM.png)
+
+- As for branching we are using CMP instruction separately ahead of actual branching instruction
+- ALU_execute stage for CMP is not considered as cycle for branch statements
 
 ## Instruction Formats
 
@@ -522,7 +538,7 @@ Insert FSM diagram here.
 
 ## Simulation Waveforms
 
-Insert waveform screenshots here.
+![alt text](Images/CPU_simulation.png)
 
 ---
 
